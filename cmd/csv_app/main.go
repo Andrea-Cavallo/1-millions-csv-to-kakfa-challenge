@@ -1,0 +1,107 @@
+package main
+
+import (
+	"csvreader/internal/producer"
+	"csvreader/internal/service"
+	"csvreader/pkg/constants"
+	"csvreader/pkg/logger"
+	"csvreader/pkg/utils"
+	"sync"
+	"time"
+
+	"github.com/google/uuid"
+)
+
+// Design Pattern : FANOUT -<
+// Il vantaggio del pattern Fan-Out è che i task vengono eseguiti in parallelo dai worker
+func main() {
+	start := time.Now()
+
+	// Genera un correlation ID
+	correlationID := uuid.New().String()
+
+	// Ottengo gli utenti dal servizio (vengono letti da un file CSV e convertiti in una lista di Users)
+	users, err := service.GetUsers()
+	if err != nil {
+		logger.Error(err)
+	}
+
+	elapsed := time.Since(start)
+	defer logger.Info("La lettura di 1000000 di utenti dal CSV ha impiegato %s", elapsed)
+
+	// Configura il kafkaProducerInstance Kafka
+	kafkaProducerInstance, err := producer.NewProducer(constants.KafkaBootstrapServers, constants.KafkaTopic)
+	if err != nil {
+		logger.Error("Failed to create kafkaProducerInstance:", err)
+	}
+	defer kafkaProducerInstance.Close()
+
+	// Crea un WaitGroup per aspettare che tutti i worker finiscano
+	var wg sync.WaitGroup
+
+	// Aggiunge il numero di worker al WaitGroup
+	wg.Add(constants.NumWorkers)
+
+	// Canale principale per inviare i task
+	mainCh := make(chan func())
+
+	// Divide il canale principale in numWorkers canali
+	channels := utils.Split(mainCh, constants.NumWorkers)
+
+	// Avvia i worker
+	for i := 0; i < constants.NumWorkers; i++ {
+		go utils.Worker(i, channels[i], &wg)
+	}
+
+	// Invio dei task al canale principale
+	go func() {
+		// Chiude il canale principale quando la funzione termina
+		defer close(mainCh)
+
+		// Primo task: Scrittura degli utenti su file JSON
+		mainCh <- func() {
+			utils.WriteUsersToJSONFile(users, constants.JSONFileName)
+		}
+
+		// Secondo task: Conversione degli utenti in Avro e scrittura su file
+		mainCh <- func() {
+			avroUsers, err := utils.ConvertUsersToAvro(users)
+			if err != nil {
+				logger.Error("Errore nella conversione degli utenti in Avro:", err)
+				return
+			}
+			err = utils.WriteAvroToFile(avroUsers, constants.AvroFileName)
+			if err != nil {
+				logger.Error("Errore nella scrittura del file Avro:", err)
+				return
+			}
+		}
+		// Terzo task: Lettura degli utenti e stampa su console
+		// mainCh <- func() {
+		//     utils.DisplayUsersAsJSON(users)
+		// }
+
+		// Quarto task: Invio degli utenti a Kafka in batch
+		mainCh <- func() {
+			batches := utils.BatchUsers(users, constants.BatchSize)
+
+			// Start time for sending batches to Kafka
+			startBatchSend := time.Now()
+
+			for _, batch := range batches {
+				err := kafkaProducerInstance.ProduceBatch(batch, correlationID)
+				if err != nil {
+					logger.Error("Errore nell'invio del batch a Kafka:", err)
+					return
+				}
+			}
+
+			// Calculate elapsed time for sending batches to Kafka
+			elapsedBatchSend := time.Since(startBatchSend)
+			logger.Info("Sending batches to Kafka took %s", elapsedBatchSend)
+		}
+	}()
+
+	// Aspetta che tutti i worker finiscano
+	wg.Wait()
+}
