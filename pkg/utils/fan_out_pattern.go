@@ -54,7 +54,7 @@ func Split(ch <-chan func(), n int) []<-chan func() {
 
 // Worker è una funzione che processa i dati da un canale
 
-func Worker(id int, ch <-chan func(), wg *sync.WaitGroup) {
+func Worker(ch <-chan func(), wg *sync.WaitGroup) {
 	defer wg.Done()
 	for task := range ch {
 		task()

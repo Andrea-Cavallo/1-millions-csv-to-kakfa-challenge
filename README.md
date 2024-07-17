@@ -2,103 +2,76 @@
 
 
 ### Project Challenge
-The main challenge of this project is to optimize the production of Kafka topics and make the process of sending one million topics as fast as possible. This optimization involves fine-tuning the Kafka producer and efficiently distributing the tasks among workers using the Fan-Out pattern. Achieving this goal will significantly enhance the performance and scalability of the application.
-This is the core idea of the project, and you will find here a basic implementation that needs to be optimized.
+The main challenge of this project is to optimize the production of Kafka topics and make the process of sending one million topics as fast as possible.<br>
+This optimization involves fine-tuning the Kafka producer and efficiently distributing the tasks among workers using the Fan-Out pattern.<br>
+Achieving this goal will significantly enhance the performance and scalability of the application.<br>
+This is the core idea of the project, and you will find here my implementation which can still be optimized.
 
-It is interesting to note that in JSON, the sending of 1 million topics, as seen from the captured log line: 1.8453342s
+
+<img src="./resources/img/run.gif" alt="run times.">
+
+It is interesting to note that in JSON, the sending of 1 million topics, as seen from the captured log line: 1.8648373s
 ```text
-INFO: 2024/07/16 13:56:15.026690 [main.go] [line:101] [GoroutineID: 58]  Sending batches to Kafka took  1.8453342s
+INFO: 2024/07/17 05:22:43.662764 [main.go] [line:101] [GoroutineID: 53]  Sending batches to Kafka took %s 1.8648373s
+
 ```
 while in Avro...?
 
 The idea is : how much we can reduce the time ??
 
-## Code Flow ( main.go )
+## How I Planned to Optimize the Flow and Precautions Taken to Achieve Maximum Performance
+To achieve the best results and maximize performance, I implemented several optimizations in the flow:
 
-### 1. Initialization
+Use of the Fan-Out Pattern: This design pattern distributes work among multiple workers, allowing tasks to be executed in parallel, which improves performance and efficiency.
+Batch Processing for Topic Sending: By sending messages in batches, we reduce the overhead associated with frequent network calls and improve throughput.
+Asynchronous Logging: Logging operations are performed asynchronously to avoid blocking the main processing flow and to enhance overall system performance.
+Byte Serialization: Data is serialized into byte format for efficient storage and transmission, reducing the processing time and memory usage.
+
+
+## Description of the main.go and explanation of the main flow
 
 The program begins by recording the start time to measure the total execution time of the process. <br>
 It then retrieves a list of users from a service that reads data from a CSV file. 
-If an error occurs while reading the file, the program terminates.
-
-### 2. Kafka Producer Configuration
 
 A Kafka producer is configured to send the processed data to a specific topic. 
 This producer is used to send messages containing the processed user data to a Kafka broker.
-
-### 3. WaitGroup Setup
 
 A `WaitGroup` is used to synchronize the workers. 
 The `WaitGroup` tracks the number of active workers and ensures the main 
 program waits for all workers to complete their tasks before terminating.
 
-### 4. Creating and Splitting Channels
-
 A main channel is created to send tasks to the workers. 
 This main channel is then split into multiple smaller channels, one for each worker. 
 This allows tasks to be evenly distributed among the workers.
-
-### 5. Starting the Workers
 
 Workers are started in parallel. 
 Each worker listens to its respective channel for tasks to execute. 
 When a worker receives a task, it executes the task and then waits for the next task.
 
-### 6. Sending Tasks
+The Fan-Out pattern is a design pattern used to distribute work among multiple workers. This pattern is particularly useful when dealing with workloads that can be broken down into independent tasks and executed in parallel to improve performance and efficiency.
 
 Tasks are sent to the main channel. The tasks include:
 
 - Writing users to a JSON file.
 - Converting users to Avro format and writing to a file.
-- Sending users to Kafka.
+- Sending users to Kafka-Broker as Json.
 
 Each task is a function executed by the workers.
 
-### 7. Waiting for Workers to Complete
-
 The main program waits for all workers to complete their tasks using the `WaitGroup`. Once all workers have finished, the program can close the Kafka producer and terminate execution.
 
-## Advantages of the Fan-Out Pattern
+#### Advantages of the Fan-Out Pattern
 
 - **Parallelism**: Tasks are executed in parallel, reducing the overall execution time.
 - **Scalability**: Adding more workers can further improve performance.
 - **Efficiency**: Workers can be distributed across multiple resources, balancing the workload.
-
-This design pattern is particularly useful in high-computation scenarios or when large amounts of data need to be processed efficiently.
-
-## What is the Fan-Out Pattern?
-
-The Fan-Out pattern is a design pattern used to distribute work among multiple workers. This pattern is particularly useful when dealing with workloads that can be broken down into independent tasks and executed in parallel to improve performance and efficiency.
-
-## How the Fan-Out Pattern Works
-
-The Fan-Out pattern is implemented by splitting a main channel into multiple smaller channels and assigning these channels to different workers to process tasks in parallel.
-
-### Key Steps of the Fan-Out Pattern:
-
-1. **Number of Workers (`numWorkers`)**: This number determines how many workers will be active to process the tasks. In the example, `numWorkers` is set to 3.
-
-2. **Splitting the Main Channel**: The `Split` function takes the main channel and divides it into `numWorkers` channels. This is important for distributing tasks evenly among the workers.
-
-3. **Distributing Tasks**: Tasks are sent to the main channel, and the `Split` function distributes them to the secondary channels in a round-robin manner. This ensures each worker receives a similar workload.
-
-4. **Worker Execution**: Workers are goroutines that read from their respective channels and execute tasks. Each worker executes tasks concurrently, improving the overall efficiency of the program.
-
-## Benefits of the Fan-Out Pattern
-
-1. **Parallelism**: The primary advantage is that tasks are executed in parallel, reducing the total execution time compared to sequential execution.
-
-2. **Load Balancing**: By splitting the work into multiple channels and assigning it to different workers, a more uniform load balancing is achieved. No worker is overloaded while others remain idle.
-
-3. **Scalability**: This pattern allows easy scaling of the number of workers as needed. If more processing power is required, simply increase the `numWorkers`.
-
-Imagine having a heavy task like processing one million user records. Doing it in a single goroutine would be slow. Using the Fan-Out pattern, you can split these records into blocks and assign them to multiple goroutines, significantly speeding up the process.
 
 
 ## Prerequisites
 
 - Docker and Docker Compose installed
 - Go installed (version 1.22.5 or later)
+- Unzip the users_million.rar
 
 ## Configuration Steps
 
@@ -161,24 +134,19 @@ docker-compose up -d
 ```
 
 ### Verify Kafka UI
-   Ensure Kafka is running and accessible via the Kafka UI. Open your browser and navigate to http://localhost:8080 to check the status and operations of Kafka.
-   <img src="./1millionTopic.png" alt="Log showing 1 million topics sent in JSON">
+Ensure Kafka is running and accessible via the Kafka UI. Open your browser and navigate to http://localhost:8080 to check the status and operations of Kafka.
 
-
+<img src="./resources/img/1millionTopic.png" alt="Log showing 1 million topics sent in JSON">
+<img src="./resources/img/1mlion-topics-kafkaui.png" alt="Log showing 1 million topics">
 
 ### Run the Program
-   With Docker and Kafka running, you can now run your Go application. Navigate to the directory containing your Go project and execute the following command:
+With Docker and Kafka running, you can now run your Go application. Navigate to the directory containing your Go project and execute the following command:
+
 
 ```sh
+go mod tidy 
 go run .\csvreader\cmd\csv_app\main.go
 ```
 
-
-## ITA - Descrizione main.go
-
-- 1) Creazione del canale principale mainCh: Questo canale viene utilizzato per inviare i task.
-- 2) Suddivisione del canale principale: La funzione Split divide il canale principale in numWorkers canali secondari. Ogni canale secondario sarà gestito da un worker.
-- 3) Avvio dei worker: Ogni worker è una goroutine che legge dal proprio canale secondario e esegue i task. I worker eseguono i task in parallelo.
-- 4) Invio dei task: I task vengono inviati al canale principale mainCh dentro una goroutine, e la funzione Split si occupa di distribuire i task ai canali secondari in modo round-robin.
-- 5) Esecuzione dei task: Ogni worker esegue i task letti dai canali secondari. Poiché i worker sono goroutine, eseguono i task in parallelo.
-
+# Author 
+Andrea Cavallo

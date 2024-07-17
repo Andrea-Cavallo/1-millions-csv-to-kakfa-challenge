@@ -68,7 +68,7 @@ func logLocationAsync() string {
 func logAsync(level string, v ...interface{}) {
 	logCh <- logMessage{
 		level: level,
-		msg:   fmt.Sprintln(append([]interface{}{logLocation()}, v...)...),
+		msg:   fmt.Sprintln(append([]interface{}{logLocationAsync()}, v...)...),
 	}
 }
 

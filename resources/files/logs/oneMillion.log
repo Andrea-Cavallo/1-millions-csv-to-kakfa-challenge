@@ -1,0 +1,454 @@
+INFO: 2024/07/17 05:19:32.703262 [kafka_producer.go] [line:24] [GoroutineID: 1]  Kafka producer created successfully
+INFO: 2024/07/17 05:19:32.722114 [kafka_producer.go] [line:57] [GoroutineID: 69]  Starting batch production
+INFO: 2024/07/17 05:19:33.837933 [kafka_producer.go] [line:82] [GoroutineID: 69]  Batch production completed
+INFO: 2024/07/17 05:19:33.837933 [kafka_producer.go] [line:57] [GoroutineID: 69]  Starting batch production
+INFO: 2024/07/17 05:19:34.130049 [kafka_producer.go] [line:82] [GoroutineID: 69]  Batch production completed
+INFO: 2024/07/17 05:19:34.130049 [kafka_producer.go] [line:57] [GoroutineID: 69]  Starting batch production
+INFO: 2024/07/17 05:19:34.491957 [kafka_producer.go] [line:82] [GoroutineID: 69]  Batch production completed
+INFO: 2024/07/17 05:19:34.491957 [kafka_producer.go] [line:57] [GoroutineID: 69]  Starting batch production
+INFO: 2024/07/17 05:19:34.797235 [kafka_producer.go] [line:82] [GoroutineID: 69]  Batch production completed
+INFO: 2024/07/17 05:19:34.797235 [kafka_producer.go] [line:57] [GoroutineID: 69]  Starting batch production
+INFO: 2024/07/17 05:19:35.053379 [kafka_producer.go] [line:82] [GoroutineID: 69]  Batch production completed
+INFO: 2024/07/17 05:19:35.053379 [kafka_producer.go] [line:57] [GoroutineID: 69]  Starting batch production
+INFO: 2024/07/17 05:19:35.252736 [kafka_producer.go] [line:82] [GoroutineID: 69]  Batch production completed
+INFO: 2024/07/17 05:19:35.252736 [kafka_producer.go] [line:57] [GoroutineID: 69]  Starting batch production
+INFO: 2024/07/17 05:19:35.450798 [kafka_producer.go] [line:82] [GoroutineID: 69]  Batch production completed
+INFO: 2024/07/17 05:19:35.450798 [kafka_producer.go] [line:57] [GoroutineID: 69]  Starting batch production
+INFO: 2024/07/17 05:19:35.648885 [kafka_producer.go] [line:82] [GoroutineID: 69]  Batch production completed
+INFO: 2024/07/17 05:19:35.648885 [kafka_producer.go] [line:57] [GoroutineID: 69]  Starting batch production
+INFO: 2024/07/17 05:19:35.827656 [kafka_producer.go] [line:82] [GoroutineID: 69]  Batch production completed
+INFO: 2024/07/17 05:19:35.827656 [kafka_producer.go] [line:57] [GoroutineID: 69]  Starting batch production
+INFO: 2024/07/17 05:19:36.015620 [kafka_producer.go] [line:82] [GoroutineID: 69]  Batch production completed
+INFO: 2024/07/17 05:19:36.015620 [main.go] [line:101] [GoroutineID: 69]  Sending batches to Kafka took %s 3.2935057s
+INFO: 2024/07/17 05:19:36.015620 [kafka_producer.go] [line:101] [GoroutineID: 1]  Closing producer
+INFO: 2024/07/17 05:19:36.117245 [main.go] [line:107] [GoroutineID: 1]  La lettura di 1000000 di utenti dal CSV ha impiegato %s 222.6319ms
+INFO: 2024/07/17 05:19:52.272295 [kafka_producer.go] [line:24] [GoroutineID: 1]  Kafka producer created successfully
+INFO: 2024/07/17 05:19:52.291474 [kafka_producer.go] [line:57] [GoroutineID: 66]  Starting batch production
+INFO: 2024/07/17 05:19:52.544648 [kafka_producer.go] [line:82] [GoroutineID: 66]  Batch production completed
+INFO: 2024/07/17 05:19:52.544648 [kafka_producer.go] [line:57] [GoroutineID: 66]  Starting batch production
+INFO: 2024/07/17 05:19:53.013956 [kafka_producer.go] [line:82] [GoroutineID: 66]  Batch production completed
+INFO: 2024/07/17 05:19:53.013956 [kafka_producer.go] [line:57] [GoroutineID: 66]  Starting batch production
+INFO: 2024/07/17 05:19:53.307264 [kafka_producer.go] [line:82] [GoroutineID: 66]  Batch production completed
+INFO: 2024/07/17 05:19:53.307264 [kafka_producer.go] [line:57] [GoroutineID: 66]  Starting batch production
+INFO: 2024/07/17 05:19:53.510982 [kafka_producer.go] [line:82] [GoroutineID: 66]  Batch production completed
+INFO: 2024/07/17 05:19:53.510982 [kafka_producer.go] [line:57] [GoroutineID: 66]  Starting batch production
+INFO: 2024/07/17 05:19:53.709453 [kafka_producer.go] [line:82] [GoroutineID: 66]  Batch production completed
+INFO: 2024/07/17 05:19:53.709453 [kafka_producer.go] [line:57] [GoroutineID: 66]  Starting batch production
+INFO: 2024/07/17 05:19:53.898511 [kafka_producer.go] [line:82] [GoroutineID: 66]  Batch production completed
+INFO: 2024/07/17 05:19:53.898511 [kafka_producer.go] [line:57] [GoroutineID: 66]  Starting batch production
+INFO: 2024/07/17 05:19:54.076114 [kafka_producer.go] [line:82] [GoroutineID: 66]  Batch production completed
+INFO: 2024/07/17 05:19:54.076114 [kafka_producer.go] [line:57] [GoroutineID: 66]  Starting batch production
+INFO: 2024/07/17 05:19:54.309649 [kafka_producer.go] [line:82] [GoroutineID: 66]  Batch production completed
+INFO: 2024/07/17 05:19:54.309649 [kafka_producer.go] [line:57] [GoroutineID: 66]  Starting batch production
+INFO: 2024/07/17 05:19:54.494165 [kafka_producer.go] [line:82] [GoroutineID: 66]  Batch production completed
+INFO: 2024/07/17 05:19:54.494165 [kafka_producer.go] [line:57] [GoroutineID: 66]  Starting batch production
+INFO: 2024/07/17 05:19:54.677366 [kafka_producer.go] [line:82] [GoroutineID: 66]  Batch production completed
+INFO: 2024/07/17 05:19:54.677366 [main.go] [line:101] [GoroutineID: 66]  Sending batches to Kafka took %s 2.385892s
+INFO: 2024/07/17 05:19:54.677366 [kafka_producer.go] [line:101] [GoroutineID: 1]  Closing producer
+INFO: 2024/07/17 05:19:54.678348 [main.go] [line:107] [GoroutineID: 1]  La lettura di 1000000 di utenti dal CSV ha impiegato %s 222.8419ms
+INFO: 2024/07/17 05:19:58.496870 [kafka_producer.go] [line:24] [GoroutineID: 1]  Kafka producer created successfully
+INFO: 2024/07/17 05:19:58.517841 [kafka_producer.go] [line:57] [GoroutineID: 85]  Starting batch production
+INFO: 2024/07/17 05:19:58.731819 [kafka_producer.go] [line:82] [GoroutineID: 85]  Batch production completed
+INFO: 2024/07/17 05:19:58.731819 [kafka_producer.go] [line:57] [GoroutineID: 85]  Starting batch production
+INFO: 2024/07/17 05:19:58.996722 [kafka_producer.go] [line:82] [GoroutineID: 85]  Batch production completed
+INFO: 2024/07/17 05:19:58.996722 [kafka_producer.go] [line:57] [GoroutineID: 85]  Starting batch production
+INFO: 2024/07/17 05:19:59.296226 [kafka_producer.go] [line:82] [GoroutineID: 85]  Batch production completed
+INFO: 2024/07/17 05:19:59.296226 [kafka_producer.go] [line:57] [GoroutineID: 85]  Starting batch production
+INFO: 2024/07/17 05:19:59.578163 [kafka_producer.go] [line:82] [GoroutineID: 85]  Batch production completed
+INFO: 2024/07/17 05:19:59.578163 [kafka_producer.go] [line:57] [GoroutineID: 85]  Starting batch production
+INFO: 2024/07/17 05:19:59.773846 [kafka_producer.go] [line:82] [GoroutineID: 85]  Batch production completed
+INFO: 2024/07/17 05:19:59.773846 [kafka_producer.go] [line:57] [GoroutineID: 85]  Starting batch production
+INFO: 2024/07/17 05:19:59.957451 [kafka_producer.go] [line:82] [GoroutineID: 85]  Batch production completed
+INFO: 2024/07/17 05:19:59.957451 [kafka_producer.go] [line:57] [GoroutineID: 85]  Starting batch production
+INFO: 2024/07/17 05:20:00.139503 [kafka_producer.go] [line:82] [GoroutineID: 85]  Batch production completed
+INFO: 2024/07/17 05:20:00.139503 [kafka_producer.go] [line:57] [GoroutineID: 85]  Starting batch production
+INFO: 2024/07/17 05:20:00.314704 [kafka_producer.go] [line:82] [GoroutineID: 85]  Batch production completed
+INFO: 2024/07/17 05:20:00.314704 [kafka_producer.go] [line:57] [GoroutineID: 85]  Starting batch production
+INFO: 2024/07/17 05:20:00.489192 [kafka_producer.go] [line:82] [GoroutineID: 85]  Batch production completed
+INFO: 2024/07/17 05:20:00.489192 [kafka_producer.go] [line:57] [GoroutineID: 85]  Starting batch production
+INFO: 2024/07/17 05:20:00.665927 [kafka_producer.go] [line:82] [GoroutineID: 85]  Batch production completed
+INFO: 2024/07/17 05:20:00.665927 [main.go] [line:101] [GoroutineID: 85]  Sending batches to Kafka took %s 2.1480855s
+INFO: 2024/07/17 05:20:00.666927 [kafka_producer.go] [line:101] [GoroutineID: 1]  Closing producer
+INFO: 2024/07/17 05:20:00.667563 [main.go] [line:107] [GoroutineID: 1]  La lettura di 1000000 di utenti dal CSV ha impiegato %s 216.2234ms
+INFO: 2024/07/17 05:20:06.718672 [kafka_producer.go] [line:24] [GoroutineID: 1]  Kafka producer created successfully
+INFO: 2024/07/17 05:20:06.737207 [kafka_producer.go] [line:57] [GoroutineID: 69]  Starting batch production
+INFO: 2024/07/17 05:20:06.948932 [kafka_producer.go] [line:82] [GoroutineID: 69]  Batch production completed
+INFO: 2024/07/17 05:20:06.948932 [kafka_producer.go] [line:57] [GoroutineID: 69]  Starting batch production
+INFO: 2024/07/17 05:20:07.144189 [kafka_producer.go] [line:82] [GoroutineID: 69]  Batch production completed
+INFO: 2024/07/17 05:20:07.144189 [kafka_producer.go] [line:57] [GoroutineID: 69]  Starting batch production
+INFO: 2024/07/17 05:20:07.354367 [kafka_producer.go] [line:82] [GoroutineID: 69]  Batch production completed
+INFO: 2024/07/17 05:20:07.354367 [kafka_producer.go] [line:57] [GoroutineID: 69]  Starting batch production
+INFO: 2024/07/17 05:20:07.653788 [kafka_producer.go] [line:82] [GoroutineID: 69]  Batch production completed
+INFO: 2024/07/17 05:20:07.653788 [kafka_producer.go] [line:57] [GoroutineID: 69]  Starting batch production
+INFO: 2024/07/17 05:20:07.860945 [kafka_producer.go] [line:82] [GoroutineID: 69]  Batch production completed
+INFO: 2024/07/17 05:20:07.861945 [kafka_producer.go] [line:57] [GoroutineID: 69]  Starting batch production
+INFO: 2024/07/17 05:20:08.067456 [kafka_producer.go] [line:82] [GoroutineID: 69]  Batch production completed
+INFO: 2024/07/17 05:20:08.067456 [kafka_producer.go] [line:57] [GoroutineID: 69]  Starting batch production
+INFO: 2024/07/17 05:20:08.264429 [kafka_producer.go] [line:82] [GoroutineID: 69]  Batch production completed
+INFO: 2024/07/17 05:20:08.264429 [kafka_producer.go] [line:57] [GoroutineID: 69]  Starting batch production
+INFO: 2024/07/17 05:20:08.444763 [kafka_producer.go] [line:82] [GoroutineID: 69]  Batch production completed
+INFO: 2024/07/17 05:20:08.444763 [kafka_producer.go] [line:57] [GoroutineID: 69]  Starting batch production
+INFO: 2024/07/17 05:20:08.623824 [kafka_producer.go] [line:82] [GoroutineID: 69]  Batch production completed
+INFO: 2024/07/17 05:20:08.623824 [kafka_producer.go] [line:57] [GoroutineID: 69]  Starting batch production
+INFO: 2024/07/17 05:20:08.802660 [kafka_producer.go] [line:82] [GoroutineID: 69]  Batch production completed
+INFO: 2024/07/17 05:20:08.802660 [main.go] [line:101] [GoroutineID: 69]  Sending batches to Kafka took %s 2.0654533s
+INFO: 2024/07/17 05:20:08.802660 [kafka_producer.go] [line:101] [GoroutineID: 1]  Closing producer
+INFO: 2024/07/17 05:20:08.803533 [main.go] [line:107] [GoroutineID: 1]  La lettura di 1000000 di utenti dal CSV ha impiegato %s 215.5979ms
+INFO: 2024/07/17 05:20:12.127038 [kafka_producer.go] [line:24] [GoroutineID: 1]  Kafka producer created successfully
+INFO: 2024/07/17 05:20:12.146007 [kafka_producer.go] [line:57] [GoroutineID: 43]  Starting batch production
+INFO: 2024/07/17 05:20:12.355850 [kafka_producer.go] [line:82] [GoroutineID: 43]  Batch production completed
+INFO: 2024/07/17 05:20:12.355850 [kafka_producer.go] [line:57] [GoroutineID: 43]  Starting batch production
+INFO: 2024/07/17 05:20:12.556044 [kafka_producer.go] [line:82] [GoroutineID: 43]  Batch production completed
+INFO: 2024/07/17 05:20:12.556044 [kafka_producer.go] [line:57] [GoroutineID: 43]  Starting batch production
+INFO: 2024/07/17 05:20:12.748309 [kafka_producer.go] [line:82] [GoroutineID: 43]  Batch production completed
+INFO: 2024/07/17 05:20:12.748309 [kafka_producer.go] [line:57] [GoroutineID: 43]  Starting batch production
+INFO: 2024/07/17 05:20:12.997913 [kafka_producer.go] [line:82] [GoroutineID: 43]  Batch production completed
+INFO: 2024/07/17 05:20:12.997913 [kafka_producer.go] [line:57] [GoroutineID: 43]  Starting batch production
+INFO: 2024/07/17 05:20:13.174080 [kafka_producer.go] [line:82] [GoroutineID: 43]  Batch production completed
+INFO: 2024/07/17 05:20:13.174080 [kafka_producer.go] [line:57] [GoroutineID: 43]  Starting batch production
+INFO: 2024/07/17 05:20:13.353731 [kafka_producer.go] [line:82] [GoroutineID: 43]  Batch production completed
+INFO: 2024/07/17 05:20:13.353731 [kafka_producer.go] [line:57] [GoroutineID: 43]  Starting batch production
+INFO: 2024/07/17 05:20:13.532016 [kafka_producer.go] [line:82] [GoroutineID: 43]  Batch production completed
+INFO: 2024/07/17 05:20:13.532016 [kafka_producer.go] [line:57] [GoroutineID: 43]  Starting batch production
+INFO: 2024/07/17 05:20:13.709465 [kafka_producer.go] [line:82] [GoroutineID: 43]  Batch production completed
+INFO: 2024/07/17 05:20:13.709465 [kafka_producer.go] [line:57] [GoroutineID: 43]  Starting batch production
+INFO: 2024/07/17 05:20:13.888735 [kafka_producer.go] [line:82] [GoroutineID: 43]  Batch production completed
+INFO: 2024/07/17 05:20:13.888735 [kafka_producer.go] [line:57] [GoroutineID: 43]  Starting batch production
+INFO: 2024/07/17 05:20:14.062306 [kafka_producer.go] [line:82] [GoroutineID: 43]  Batch production completed
+INFO: 2024/07/17 05:20:14.062306 [main.go] [line:101] [GoroutineID: 43]  Sending batches to Kafka took %s 1.9162991s
+INFO: 2024/07/17 05:20:14.062306 [kafka_producer.go] [line:101] [GoroutineID: 1]  Closing producer
+INFO: 2024/07/17 05:20:14.063589 [main.go] [line:107] [GoroutineID: 1]  La lettura di 1000000 di utenti dal CSV ha impiegato %s 212.9302ms
+INFO: 2024/07/17 05:20:21.857486 [kafka_producer.go] [line:24] [GoroutineID: 1]  Kafka producer created successfully
+INFO: 2024/07/17 05:20:21.876826 [kafka_producer.go] [line:57] [GoroutineID: 50]  Starting batch production
+INFO: 2024/07/17 05:20:22.098039 [kafka_producer.go] [line:82] [GoroutineID: 50]  Batch production completed
+INFO: 2024/07/17 05:20:22.098039 [kafka_producer.go] [line:57] [GoroutineID: 50]  Starting batch production
+INFO: 2024/07/17 05:20:22.291518 [kafka_producer.go] [line:82] [GoroutineID: 50]  Batch production completed
+INFO: 2024/07/17 05:20:22.291518 [kafka_producer.go] [line:57] [GoroutineID: 50]  Starting batch production
+INFO: 2024/07/17 05:20:22.530628 [kafka_producer.go] [line:82] [GoroutineID: 50]  Batch production completed
+INFO: 2024/07/17 05:20:22.530628 [kafka_producer.go] [line:57] [GoroutineID: 50]  Starting batch production
+INFO: 2024/07/17 05:20:22.738599 [kafka_producer.go] [line:82] [GoroutineID: 50]  Batch production completed
+INFO: 2024/07/17 05:20:22.738599 [kafka_producer.go] [line:57] [GoroutineID: 50]  Starting batch production
+INFO: 2024/07/17 05:20:22.934976 [kafka_producer.go] [line:82] [GoroutineID: 50]  Batch production completed
+INFO: 2024/07/17 05:20:22.934976 [kafka_producer.go] [line:57] [GoroutineID: 50]  Starting batch production
+INFO: 2024/07/17 05:20:23.118382 [kafka_producer.go] [line:82] [GoroutineID: 50]  Batch production completed
+INFO: 2024/07/17 05:20:23.118894 [kafka_producer.go] [line:57] [GoroutineID: 50]  Starting batch production
+INFO: 2024/07/17 05:20:23.296644 [kafka_producer.go] [line:82] [GoroutineID: 50]  Batch production completed
+INFO: 2024/07/17 05:20:23.296644 [kafka_producer.go] [line:57] [GoroutineID: 50]  Starting batch production
+INFO: 2024/07/17 05:20:23.483188 [kafka_producer.go] [line:82] [GoroutineID: 50]  Batch production completed
+INFO: 2024/07/17 05:20:23.483188 [kafka_producer.go] [line:57] [GoroutineID: 50]  Starting batch production
+INFO: 2024/07/17 05:20:23.660948 [kafka_producer.go] [line:82] [GoroutineID: 50]  Batch production completed
+INFO: 2024/07/17 05:20:23.660948 [kafka_producer.go] [line:57] [GoroutineID: 50]  Starting batch production
+INFO: 2024/07/17 05:20:23.845853 [kafka_producer.go] [line:82] [GoroutineID: 50]  Batch production completed
+INFO: 2024/07/17 05:20:23.845853 [main.go] [line:101] [GoroutineID: 50]  Sending batches to Kafka took %s 1.9690269s
+INFO: 2024/07/17 05:20:23.845853 [kafka_producer.go] [line:101] [GoroutineID: 1]  Closing producer
+INFO: 2024/07/17 05:20:23.959548 [main.go] [line:107] [GoroutineID: 1]  La lettura di 1000000 di utenti dal CSV ha impiegato %s 224.4117ms
+INFO: 2024/07/17 05:21:32.947874 [kafka_producer.go] [line:24] [GoroutineID: 1]  Kafka producer created successfully
+INFO: 2024/07/17 05:21:32.967690 [kafka_producer.go] [line:57] [GoroutineID: 71]  Starting batch production
+INFO: 2024/07/17 05:21:33.190960 [kafka_producer.go] [line:82] [GoroutineID: 71]  Batch production completed
+INFO: 2024/07/17 05:21:33.190960 [kafka_producer.go] [line:57] [GoroutineID: 71]  Starting batch production
+INFO: 2024/07/17 05:21:33.391502 [kafka_producer.go] [line:82] [GoroutineID: 71]  Batch production completed
+INFO: 2024/07/17 05:21:33.391502 [kafka_producer.go] [line:57] [GoroutineID: 71]  Starting batch production
+INFO: 2024/07/17 05:21:33.644938 [kafka_producer.go] [line:82] [GoroutineID: 71]  Batch production completed
+INFO: 2024/07/17 05:21:33.644938 [kafka_producer.go] [line:57] [GoroutineID: 71]  Starting batch production
+INFO: 2024/07/17 05:21:33.858554 [kafka_producer.go] [line:82] [GoroutineID: 71]  Batch production completed
+INFO: 2024/07/17 05:21:33.858554 [kafka_producer.go] [line:57] [GoroutineID: 71]  Starting batch production
+INFO: 2024/07/17 05:21:34.056193 [kafka_producer.go] [line:82] [GoroutineID: 71]  Batch production completed
+INFO: 2024/07/17 05:21:34.056193 [kafka_producer.go] [line:57] [GoroutineID: 71]  Starting batch production
+INFO: 2024/07/17 05:21:34.254635 [kafka_producer.go] [line:82] [GoroutineID: 71]  Batch production completed
+INFO: 2024/07/17 05:21:34.254635 [kafka_producer.go] [line:57] [GoroutineID: 71]  Starting batch production
+INFO: 2024/07/17 05:21:34.502975 [kafka_producer.go] [line:82] [GoroutineID: 71]  Batch production completed
+INFO: 2024/07/17 05:21:34.502975 [kafka_producer.go] [line:57] [GoroutineID: 71]  Starting batch production
+INFO: 2024/07/17 05:21:34.693346 [kafka_producer.go] [line:82] [GoroutineID: 71]  Batch production completed
+INFO: 2024/07/17 05:21:34.693346 [kafka_producer.go] [line:57] [GoroutineID: 71]  Starting batch production
+INFO: 2024/07/17 05:21:34.874029 [kafka_producer.go] [line:82] [GoroutineID: 71]  Batch production completed
+INFO: 2024/07/17 05:21:34.874029 [kafka_producer.go] [line:57] [GoroutineID: 71]  Starting batch production
+INFO: 2024/07/17 05:21:35.054153 [kafka_producer.go] [line:82] [GoroutineID: 71]  Batch production completed
+INFO: 2024/07/17 05:21:35.055153 [main.go] [line:101] [GoroutineID: 71]  Sending batches to Kafka took %s 2.0879741s
+INFO: 2024/07/17 05:21:35.055153 [kafka_producer.go] [line:101] [GoroutineID: 1]  Closing producer
+INFO: 2024/07/17 05:21:35.055472 [main.go] [line:107] [GoroutineID: 1]  La lettura di 1000000 di utenti dal CSV ha impiegato %s 205.4032ms
+INFO: 2024/07/17 05:21:48.930899 [kafka_producer.go] [line:24] [GoroutineID: 1]  Kafka producer created successfully
+INFO: 2024/07/17 05:21:48.949329 [kafka_producer.go] [line:57] [GoroutineID: 69]  Starting batch production
+INFO: 2024/07/17 05:21:49.179949 [kafka_producer.go] [line:82] [GoroutineID: 69]  Batch production completed
+INFO: 2024/07/17 05:21:49.179949 [kafka_producer.go] [line:57] [GoroutineID: 69]  Starting batch production
+INFO: 2024/07/17 05:21:49.379013 [kafka_producer.go] [line:82] [GoroutineID: 69]  Batch production completed
+INFO: 2024/07/17 05:21:49.379013 [kafka_producer.go] [line:57] [GoroutineID: 69]  Starting batch production
+INFO: 2024/07/17 05:21:49.569994 [kafka_producer.go] [line:82] [GoroutineID: 69]  Batch production completed
+INFO: 2024/07/17 05:21:49.569994 [kafka_producer.go] [line:57] [GoroutineID: 69]  Starting batch production
+INFO: 2024/07/17 05:21:49.749083 [kafka_producer.go] [line:82] [GoroutineID: 69]  Batch production completed
+INFO: 2024/07/17 05:21:49.749083 [kafka_producer.go] [line:57] [GoroutineID: 69]  Starting batch production
+INFO: 2024/07/17 05:21:49.929519 [kafka_producer.go] [line:82] [GoroutineID: 69]  Batch production completed
+INFO: 2024/07/17 05:21:49.929519 [kafka_producer.go] [line:57] [GoroutineID: 69]  Starting batch production
+INFO: 2024/07/17 05:21:50.111981 [kafka_producer.go] [line:82] [GoroutineID: 69]  Batch production completed
+INFO: 2024/07/17 05:21:50.111981 [kafka_producer.go] [line:57] [GoroutineID: 69]  Starting batch production
+INFO: 2024/07/17 05:21:50.285968 [kafka_producer.go] [line:82] [GoroutineID: 69]  Batch production completed
+INFO: 2024/07/17 05:21:50.285968 [kafka_producer.go] [line:57] [GoroutineID: 69]  Starting batch production
+INFO: 2024/07/17 05:21:50.473329 [kafka_producer.go] [line:82] [GoroutineID: 69]  Batch production completed
+INFO: 2024/07/17 05:21:50.473329 [kafka_producer.go] [line:57] [GoroutineID: 69]  Starting batch production
+INFO: 2024/07/17 05:21:50.657303 [kafka_producer.go] [line:82] [GoroutineID: 69]  Batch production completed
+INFO: 2024/07/17 05:21:50.657303 [kafka_producer.go] [line:57] [GoroutineID: 69]  Starting batch production
+INFO: 2024/07/17 05:21:50.841401 [kafka_producer.go] [line:82] [GoroutineID: 69]  Batch production completed
+INFO: 2024/07/17 05:21:50.841401 [main.go] [line:101] [GoroutineID: 69]  Sending batches to Kafka took %s 1.8920721s
+INFO: 2024/07/17 05:21:50.841401 [kafka_producer.go] [line:101] [GoroutineID: 1]  Closing producer
+INFO: 2024/07/17 05:21:50.842399 [main.go] [line:107] [GoroutineID: 1]  La lettura di 1000000 di utenti dal CSV ha impiegato %s 224.0897ms
+INFO: 2024/07/17 05:22:41.779635 [kafka_producer.go] [line:24] [GoroutineID: 1]  Kafka producer created successfully
+INFO: 2024/07/17 05:22:41.797927 [kafka_producer.go] [line:57] [GoroutineID: 53]  Starting batch production
+INFO: 2024/07/17 05:22:42.023499 [kafka_producer.go] [line:82] [GoroutineID: 53]  Batch production completed
+INFO: 2024/07/17 05:22:42.023499 [kafka_producer.go] [line:57] [GoroutineID: 53]  Starting batch production
+INFO: 2024/07/17 05:22:42.218830 [kafka_producer.go] [line:82] [GoroutineID: 53]  Batch production completed
+INFO: 2024/07/17 05:22:42.218830 [kafka_producer.go] [line:57] [GoroutineID: 53]  Starting batch production
+INFO: 2024/07/17 05:22:42.412706 [kafka_producer.go] [line:82] [GoroutineID: 53]  Batch production completed
+INFO: 2024/07/17 05:22:42.412706 [kafka_producer.go] [line:57] [GoroutineID: 53]  Starting batch production
+INFO: 2024/07/17 05:22:42.587460 [kafka_producer.go] [line:82] [GoroutineID: 53]  Batch production completed
+INFO: 2024/07/17 05:22:42.587460 [kafka_producer.go] [line:57] [GoroutineID: 53]  Starting batch production
+INFO: 2024/07/17 05:22:42.768131 [kafka_producer.go] [line:82] [GoroutineID: 53]  Batch production completed
+INFO: 2024/07/17 05:22:42.768131 [kafka_producer.go] [line:57] [GoroutineID: 53]  Starting batch production
+INFO: 2024/07/17 05:22:42.944311 [kafka_producer.go] [line:82] [GoroutineID: 53]  Batch production completed
+INFO: 2024/07/17 05:22:42.944311 [kafka_producer.go] [line:57] [GoroutineID: 53]  Starting batch production
+INFO: 2024/07/17 05:22:43.129234 [kafka_producer.go] [line:82] [GoroutineID: 53]  Batch production completed
+INFO: 2024/07/17 05:22:43.129748 [kafka_producer.go] [line:57] [GoroutineID: 53]  Starting batch production
+INFO: 2024/07/17 05:22:43.304751 [kafka_producer.go] [line:82] [GoroutineID: 53]  Batch production completed
+INFO: 2024/07/17 05:22:43.304751 [kafka_producer.go] [line:57] [GoroutineID: 53]  Starting batch production
+INFO: 2024/07/17 05:22:43.483389 [kafka_producer.go] [line:82] [GoroutineID: 53]  Batch production completed
+INFO: 2024/07/17 05:22:43.483389 [kafka_producer.go] [line:57] [GoroutineID: 53]  Starting batch production
+INFO: 2024/07/17 05:22:43.662764 [kafka_producer.go] [line:82] [GoroutineID: 53]  Batch production completed
+INFO: 2024/07/17 05:22:43.662764 [main.go] [line:101] [GoroutineID: 53]  Sending batches to Kafka took %s 1.8648373s
+INFO: 2024/07/17 05:22:43.663277 [kafka_producer.go] [line:101] [GoroutineID: 1]  Closing producer
+INFO: 2024/07/17 05:22:43.663277 [main.go] [line:107] [GoroutineID: 1]  La lettura di 1000000 di utenti dal CSV ha impiegato %s 215.6673ms
+INFO: 2024/07/17 06:02:07.214166 [async_logger.go] [line:80] [GoroutineID: 1]  Kafka producer created successfully
+
+INFO: 2024/07/17 06:02:07.243263 [async_logger.go] [line:80] [GoroutineID: 54]  Starting batch production
+
+INFO: 2024/07/17 06:02:07.613310 [async_logger.go] [line:80] [GoroutineID: 54]  Batch production completed
+
+INFO: 2024/07/17 06:02:07.613310 [async_logger.go] [line:80] [GoroutineID: 54]  Starting batch production
+
+INFO: 2024/07/17 06:02:07.909672 [async_logger.go] [line:80] [GoroutineID: 54]  Batch production completed
+
+INFO: 2024/07/17 06:02:07.909672 [async_logger.go] [line:80] [GoroutineID: 54]  Starting batch production
+
+INFO: 2024/07/17 06:02:08.205151 [async_logger.go] [line:80] [GoroutineID: 54]  Batch production completed
+
+INFO: 2024/07/17 06:02:08.205151 [async_logger.go] [line:80] [GoroutineID: 54]  Starting batch production
+
+INFO: 2024/07/17 06:02:08.477614 [async_logger.go] [line:80] [GoroutineID: 54]  Batch production completed
+
+INFO: 2024/07/17 06:02:08.477614 [async_logger.go] [line:80] [GoroutineID: 54]  Starting batch production
+
+INFO: 2024/07/17 06:02:08.728558 [async_logger.go] [line:80] [GoroutineID: 54]  Batch production completed
+
+INFO: 2024/07/17 06:02:08.728558 [async_logger.go] [line:80] [GoroutineID: 54]  Starting batch production
+
+INFO: 2024/07/17 06:02:08.917414 [async_logger.go] [line:80] [GoroutineID: 54]  Batch production completed
+
+INFO: 2024/07/17 06:02:08.917414 [async_logger.go] [line:80] [GoroutineID: 54]  Starting batch production
+
+INFO: 2024/07/17 06:02:09.096114 [async_logger.go] [line:80] [GoroutineID: 54]  Batch production completed
+
+INFO: 2024/07/17 06:02:09.096114 [async_logger.go] [line:80] [GoroutineID: 54]  Starting batch production
+
+INFO: 2024/07/17 06:02:09.271608 [async_logger.go] [line:80] [GoroutineID: 54]  Batch production completed
+
+INFO: 2024/07/17 06:02:09.271608 [async_logger.go] [line:80] [GoroutineID: 54]  Starting batch production
+
+INFO: 2024/07/17 06:02:09.446098 [async_logger.go] [line:80] [GoroutineID: 54]  Batch production completed
+
+INFO: 2024/07/17 06:02:09.446098 [async_logger.go] [line:80] [GoroutineID: 54]  Starting batch production
+
+INFO: 2024/07/17 06:02:09.623710 [async_logger.go] [line:80] [GoroutineID: 54]  Batch production completed
+
+INFO: 2024/07/17 06:02:09.623710 [async_logger.go] [line:80] [GoroutineID: 54]  Sending batches to Kafka took %s 2.4095442s
+
+INFO: 2024/07/17 06:02:09.623710 [async_logger.go] [line:80] [GoroutineID: 1]  Closing producer
+
+INFO: 2024/07/17 06:02:09.624225 [async_logger.go] [line:80] [GoroutineID: 1]  La lettura di 1000000 di utenti dal CSV ha impiegato %s 224.6253ms
+
+INFO: 2024/07/17 06:02:16.696507 [async_logger.go] [line:80] [GoroutineID: 1]  Kafka producer created successfully
+
+INFO: 2024/07/17 06:02:16.719408 [async_logger.go] [line:80] [GoroutineID: 14]  Starting batch production
+
+INFO: 2024/07/17 06:02:16.963200 [async_logger.go] [line:80] [GoroutineID: 14]  Batch production completed
+
+INFO: 2024/07/17 06:02:16.963200 [async_logger.go] [line:80] [GoroutineID: 14]  Starting batch production
+
+INFO: 2024/07/17 06:02:17.396827 [async_logger.go] [line:80] [GoroutineID: 14]  Batch production completed
+
+INFO: 2024/07/17 06:02:17.396827 [async_logger.go] [line:80] [GoroutineID: 14]  Starting batch production
+
+INFO: 2024/07/17 06:02:17.673238 [async_logger.go] [line:80] [GoroutineID: 14]  Batch production completed
+
+INFO: 2024/07/17 06:02:17.673238 [async_logger.go] [line:80] [GoroutineID: 14]  Starting batch production
+
+INFO: 2024/07/17 06:02:17.879106 [async_logger.go] [line:80] [GoroutineID: 14]  Batch production completed
+
+INFO: 2024/07/17 06:02:17.879106 [async_logger.go] [line:80] [GoroutineID: 14]  Starting batch production
+
+INFO: 2024/07/17 06:02:18.083895 [async_logger.go] [line:80] [GoroutineID: 14]  Batch production completed
+
+INFO: 2024/07/17 06:02:18.083895 [async_logger.go] [line:80] [GoroutineID: 14]  Starting batch production
+
+INFO: 2024/07/17 06:02:18.277855 [async_logger.go] [line:80] [GoroutineID: 14]  Batch production completed
+
+INFO: 2024/07/17 06:02:18.277855 [async_logger.go] [line:80] [GoroutineID: 14]  Starting batch production
+
+INFO: 2024/07/17 06:02:18.467827 [async_logger.go] [line:80] [GoroutineID: 14]  Batch production completed
+
+INFO: 2024/07/17 06:02:18.467827 [async_logger.go] [line:80] [GoroutineID: 14]  Starting batch production
+
+INFO: 2024/07/17 06:02:18.640720 [async_logger.go] [line:80] [GoroutineID: 14]  Batch production completed
+
+INFO: 2024/07/17 06:02:18.640720 [async_logger.go] [line:80] [GoroutineID: 14]  Starting batch production
+
+INFO: 2024/07/17 06:02:18.819033 [async_logger.go] [line:80] [GoroutineID: 14]  Batch production completed
+
+INFO: 2024/07/17 06:02:18.819033 [async_logger.go] [line:80] [GoroutineID: 14]  Starting batch production
+
+INFO: 2024/07/17 06:02:18.992409 [async_logger.go] [line:80] [GoroutineID: 14]  Batch production completed
+
+INFO: 2024/07/17 06:02:18.992409 [async_logger.go] [line:80] [GoroutineID: 14]  Sending batches to Kafka took %s 2.2959023s
+
+INFO: 2024/07/17 06:02:18.992409 [async_logger.go] [line:80] [GoroutineID: 1]  Closing producer
+
+INFO: 2024/07/17 06:02:18.993914 [async_logger.go] [line:80] [GoroutineID: 1]  La lettura di 1000000 di utenti dal CSV ha impiegato %s 214.75ms
+
+INFO: 2024/07/17 06:02:23.068859 [async_logger.go] [line:80] [GoroutineID: 1]  Kafka producer created successfully
+
+INFO: 2024/07/17 06:02:23.095490 [async_logger.go] [line:80] [GoroutineID: 53]  Starting batch production
+
+INFO: 2024/07/17 06:02:24.181775 [async_logger.go] [line:80] [GoroutineID: 53]  Batch production completed
+
+INFO: 2024/07/17 06:02:24.181775 [async_logger.go] [line:80] [GoroutineID: 53]  Starting batch production
+
+INFO: 2024/07/17 06:02:24.471428 [async_logger.go] [line:80] [GoroutineID: 53]  Batch production completed
+
+INFO: 2024/07/17 06:02:24.471428 [async_logger.go] [line:80] [GoroutineID: 53]  Starting batch production
+
+INFO: 2024/07/17 06:02:24.741848 [async_logger.go] [line:80] [GoroutineID: 53]  Batch production completed
+
+INFO: 2024/07/17 06:02:24.742357 [async_logger.go] [line:80] [GoroutineID: 53]  Starting batch production
+
+INFO: 2024/07/17 06:02:25.018594 [async_logger.go] [line:80] [GoroutineID: 53]  Batch production completed
+
+INFO: 2024/07/17 06:02:25.018594 [async_logger.go] [line:80] [GoroutineID: 53]  Starting batch production
+
+INFO: 2024/07/17 06:02:25.201311 [async_logger.go] [line:80] [GoroutineID: 53]  Batch production completed
+
+INFO: 2024/07/17 06:02:25.201311 [async_logger.go] [line:80] [GoroutineID: 53]  Starting batch production
+
+INFO: 2024/07/17 06:02:25.380734 [async_logger.go] [line:80] [GoroutineID: 53]  Batch production completed
+
+INFO: 2024/07/17 06:02:25.380734 [async_logger.go] [line:80] [GoroutineID: 53]  Starting batch production
+
+INFO: 2024/07/17 06:02:25.561553 [async_logger.go] [line:80] [GoroutineID: 53]  Batch production completed
+
+INFO: 2024/07/17 06:02:25.561553 [async_logger.go] [line:80] [GoroutineID: 53]  Starting batch production
+
+INFO: 2024/07/17 06:02:25.734025 [async_logger.go] [line:80] [GoroutineID: 53]  Batch production completed
+
+INFO: 2024/07/17 06:02:25.734025 [async_logger.go] [line:80] [GoroutineID: 53]  Starting batch production
+
+INFO: 2024/07/17 06:02:25.909235 [async_logger.go] [line:80] [GoroutineID: 53]  Batch production completed
+
+INFO: 2024/07/17 06:02:25.909235 [async_logger.go] [line:80] [GoroutineID: 53]  Starting batch production
+
+INFO: 2024/07/17 06:02:26.082717 [async_logger.go] [line:80] [GoroutineID: 53]  Batch production completed
+
+INFO: 2024/07/17 06:02:26.082717 [async_logger.go] [line:80] [GoroutineID: 53]  Sending batches to Kafka took %s 3.0138575s
+
+INFO: 2024/07/17 06:02:26.082717 [async_logger.go] [line:80] [GoroutineID: 1]  Closing producer
+
+INFO: 2024/07/17 06:02:26.083601 [async_logger.go] [line:80] [GoroutineID: 1]  La lettura di 1000000 di utenti dal CSV ha impiegato %s 221.6524ms
+
+INFO: 2024/07/17 06:02:31.056420 [async_logger.go] [line:80] [GoroutineID: 1]  Kafka producer created successfully
+
+INFO: 2024/07/17 06:02:31.077886 [async_logger.go] [line:80] [GoroutineID: 68]  Starting batch production
+
+INFO: 2024/07/17 06:02:31.275579 [async_logger.go] [line:80] [GoroutineID: 68]  Batch production completed
+
+INFO: 2024/07/17 06:02:31.275579 [async_logger.go] [line:80] [GoroutineID: 68]  Starting batch production
+
+INFO: 2024/07/17 06:02:31.485220 [async_logger.go] [line:80] [GoroutineID: 68]  Batch production completed
+
+INFO: 2024/07/17 06:02:31.485220 [async_logger.go] [line:80] [GoroutineID: 68]  Starting batch production
+
+INFO: 2024/07/17 06:02:31.755575 [async_logger.go] [line:80] [GoroutineID: 68]  Batch production completed
+
+INFO: 2024/07/17 06:02:31.755575 [async_logger.go] [line:80] [GoroutineID: 68]  Starting batch production
+
+INFO: 2024/07/17 06:02:31.972060 [async_logger.go] [line:80] [GoroutineID: 68]  Batch production completed
+
+INFO: 2024/07/17 06:02:31.972060 [async_logger.go] [line:80] [GoroutineID: 68]  Starting batch production
+
+INFO: 2024/07/17 06:02:32.169480 [async_logger.go] [line:80] [GoroutineID: 68]  Batch production completed
+
+INFO: 2024/07/17 06:02:32.170480 [async_logger.go] [line:80] [GoroutineID: 68]  Starting batch production
+
+INFO: 2024/07/17 06:02:32.358160 [async_logger.go] [line:80] [GoroutineID: 68]  Batch production completed
+
+INFO: 2024/07/17 06:02:32.358160 [async_logger.go] [line:80] [GoroutineID: 68]  Starting batch production
+
+INFO: 2024/07/17 06:02:32.546005 [async_logger.go] [line:80] [GoroutineID: 68]  Batch production completed
+
+INFO: 2024/07/17 06:02:32.546005 [async_logger.go] [line:80] [GoroutineID: 68]  Starting batch production
+
+INFO: 2024/07/17 06:02:32.726830 [async_logger.go] [line:80] [GoroutineID: 68]  Batch production completed
+
+INFO: 2024/07/17 06:02:32.726830 [async_logger.go] [line:80] [GoroutineID: 68]  Starting batch production
+
+INFO: 2024/07/17 06:02:32.902797 [async_logger.go] [line:80] [GoroutineID: 68]  Batch production completed
+
+INFO: 2024/07/17 06:02:32.902797 [async_logger.go] [line:80] [GoroutineID: 68]  Starting batch production
+
+INFO: 2024/07/17 06:02:33.075408 [async_logger.go] [line:80] [GoroutineID: 68]  Batch production completed
+
+INFO: 2024/07/17 06:02:33.075408 [async_logger.go] [line:80] [GoroutineID: 68]  Sending batches to Kafka took %s 2.0189876s
+
+INFO: 2024/07/17 06:02:33.075408 [async_logger.go] [line:80] [GoroutineID: 1]  Closing producer
+
+INFO: 2024/07/17 06:02:37.134698 [async_logger.go] [line:80] [GoroutineID: 1]  Kafka producer created successfully
+
+INFO: 2024/07/17 06:02:37.155626 [async_logger.go] [line:80] [GoroutineID: 57]  Starting batch production
+
+INFO: 2024/07/17 06:02:37.353894 [async_logger.go] [line:80] [GoroutineID: 57]  Batch production completed
+
+INFO: 2024/07/17 06:02:37.353894 [async_logger.go] [line:80] [GoroutineID: 57]  Starting batch production
+
+INFO: 2024/07/17 06:02:37.543807 [async_logger.go] [line:80] [GoroutineID: 57]  Batch production completed
+
+INFO: 2024/07/17 06:02:37.543807 [async_logger.go] [line:80] [GoroutineID: 57]  Starting batch production
+
+INFO: 2024/07/17 06:02:37.731429 [async_logger.go] [line:80] [GoroutineID: 57]  Batch production completed
+
+INFO: 2024/07/17 06:02:37.731429 [async_logger.go] [line:80] [GoroutineID: 57]  Starting batch production
+
+INFO: 2024/07/17 06:02:37.908235 [async_logger.go] [line:80] [GoroutineID: 57]  Batch production completed
+
+INFO: 2024/07/17 06:02:37.908235 [async_logger.go] [line:80] [GoroutineID: 57]  Starting batch production
+
+INFO: 2024/07/17 06:02:38.090159 [async_logger.go] [line:80] [GoroutineID: 57]  Batch production completed
+
+INFO: 2024/07/17 06:02:38.090159 [async_logger.go] [line:80] [GoroutineID: 57]  Starting batch production
+
+INFO: 2024/07/17 06:02:38.266333 [async_logger.go] [line:80] [GoroutineID: 57]  Batch production completed
+
+INFO: 2024/07/17 06:02:38.266333 [async_logger.go] [line:80] [GoroutineID: 57]  Starting batch production
+
+INFO: 2024/07/17 06:02:38.444882 [async_logger.go] [line:80] [GoroutineID: 57]  Batch production completed
+
+INFO: 2024/07/17 06:02:38.444882 [async_logger.go] [line:80] [GoroutineID: 57]  Starting batch production
+
+INFO: 2024/07/17 06:02:38.620619 [async_logger.go] [line:80] [GoroutineID: 57]  Batch production completed
+
+INFO: 2024/07/17 06:02:38.620619 [async_logger.go] [line:80] [GoroutineID: 57]  Starting batch production
+
+INFO: 2024/07/17 06:02:38.800682 [async_logger.go] [line:80] [GoroutineID: 57]  Batch production completed
+
+INFO: 2024/07/17 06:02:38.800682 [async_logger.go] [line:80] [GoroutineID: 57]  Starting batch production
+
+INFO: 2024/07/17 06:02:38.984764 [async_logger.go] [line:80] [GoroutineID: 57]  Batch production completed
+
+INFO: 2024/07/17 06:02:38.984764 [async_logger.go] [line:80] [GoroutineID: 57]  Sending batches to Kafka took %s 1.8500661s
+
+INFO: 2024/07/17 06:02:38.984764 [async_logger.go] [line:80] [GoroutineID: 1]  Closing producer
+
+INFO: 2024/07/17 06:02:38.985714 [async_logger.go] [line:80] [GoroutineID: 1]  La lettura di 1000000 di utenti dal CSV ha impiegato %s 212.8739ms
+

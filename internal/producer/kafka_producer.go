@@ -21,7 +21,7 @@ func NewProducer(bootstrapServers, topic string) (*Producer, error) {
 		return nil, fmt.Errorf("failed to create producer: %w", err)
 	}
 
-	logger.Info("Kafka producer created successfully")
+	logger.InfoAsync("Kafka producer created successfully")
 
 	return &Producer{
 		producer:     p,
@@ -31,34 +31,34 @@ func NewProducer(bootstrapServers, topic string) (*Producer, error) {
 }
 
 func (p *Producer) Produce(value *models.User, correlationID string) error {
-	logger.Debug("Starting serialization")
+	logger.DebugAsync("Starting serialization")
 	payload, err := json.Marshal(value)
 	if err != nil {
-		logger.Error("Failed to serialize payload:", err)
+		logger.ErrorAsync("Failed to serialize payload:", err)
 		return fmt.Errorf("failed to serialize payload: %w", err)
 	}
 
-	logger.Debug("Serialization successful, starting production")
+	logger.DebugAsync("Serialization successful, starting production")
 	err = p.producer.Produce(&kafka.Message{
 		TopicPartition: kafka.TopicPartition{Topic: &p.topic, Partition: kafka.PartitionAny},
 		Value:          payload,
 		Headers:        []kafka.Header{{Key: "correlation-id", Value: []byte(correlationID)}},
 	}, p.deliveryChan)
 	if err != nil {
-		logger.Error("Produce failed:", err)
+		logger.ErrorAsync("Produce failed:", err)
 		return fmt.Errorf("produce failed: %w", err)
 	}
 
-	logger.Debug("Message produced, waiting for delivery report")
+	logger.DebugAsync("Message produced, waiting for delivery report")
 	return p.waitForDeliveryReport()
 }
 
 func (p *Producer) ProduceBatch(users []models.User, correlationID string) error {
-	logger.Info("Starting batch production")
+	logger.InfoAsync("Starting batch production")
 	for _, user := range users {
 		payload, err := json.Marshal(&user) // da cambiare rallenta..
 		if err != nil {
-			logger.Error("Failed to serialize payload:", err)
+			logger.ErrorAsync("Failed to serialize payload:", err)
 			return fmt.Errorf("failed to serialize payload: %w", err)
 		}
 
@@ -68,7 +68,7 @@ func (p *Producer) ProduceBatch(users []models.User, correlationID string) error
 			Headers:        []kafka.Header{{Key: "correlation-id", Value: []byte(correlationID)}},
 		}, p.deliveryChan)
 		if err != nil {
-			logger.Error("Produce failed:", err)
+			logger.ErrorAsync("Produce failed:", err)
 			return fmt.Errorf("produce failed: %w", err)
 		}
 	}
@@ -79,7 +79,7 @@ func (p *Producer) ProduceBatch(users []models.User, correlationID string) error
 			return err
 		}
 	}
-	logger.Info("Batch production completed")
+	logger.InfoAsync("Batch production completed")
 	return nil
 }
 
@@ -88,17 +88,17 @@ func (p *Producer) waitForDeliveryReport() error {
 	m := e.(*kafka.Message)
 
 	if m.TopicPartition.Error != nil {
-		logger.Error("Delivery failed:", m.TopicPartition.Error)
+		logger.ErrorAsync("Delivery failed:", m.TopicPartition.Error)
 		return fmt.Errorf("delivery failed: %w", m.TopicPartition.Error)
 	}
 
-	//	logger.Info(fmt.Sprintf("Delivered message to topic %s [%d] at offset %v",
+	//	logger.InfoAsync(fmt.Sprintf("Delivered message to topic %s [%d] at offset %v",
 	//	*m.TopicPartition.Topic, m.TopicPartition.Partition, m.TopicPartition.Offset))
 	return nil
 }
 
 func (p *Producer) Close() {
-	logger.Info("Closing producer")
+	logger.InfoAsync("Closing producer")
 	close(p.deliveryChan)
 	p.producer.Close()
 }

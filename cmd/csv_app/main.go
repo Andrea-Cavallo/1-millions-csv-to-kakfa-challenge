@@ -23,16 +23,16 @@ func main() {
 	// Ottengo gli utenti dal servizio (vengono letti da un file CSV e convertiti in una lista di Users)
 	users, err := service.GetUsers()
 	if err != nil {
-		logger.Error(err)
+		logger.ErrorAsync(err)
 	}
-
+	
 	elapsed := time.Since(start)
-	defer logger.Info("La lettura di 1000000 di utenti dal CSV ha impiegato %s", elapsed)
+	defer logger.InfoAsync("La lettura di 1000000 di utenti dal CSV ha impiegato %s", elapsed)
 
 	// Configura il kafkaProducerInstance Kafka
 	kafkaProducerInstance, err := producer.NewProducer(constants.KafkaBootstrapServers, constants.KafkaTopic)
 	if err != nil {
-		logger.Error("Failed to create kafkaProducerInstance:", err)
+		logger.ErrorAsync("Failed to create kafkaProducerInstance:", err)
 	}
 	defer kafkaProducerInstance.Close()
 
@@ -50,7 +50,7 @@ func main() {
 
 	// Avvia i worker
 	for i := 0; i < constants.NumWorkers; i++ {
-		go utils.Worker(i, channels[i], &wg)
+		go utils.Worker(channels[i], &wg)
 	}
 
 	// Invio dei task al canale principale
@@ -67,12 +67,12 @@ func main() {
 		mainCh <- func() {
 			avroUsers, err := utils.ConvertUsersToAvro(users)
 			if err != nil {
-				logger.Error("Errore nella conversione degli utenti in Avro:", err)
+				logger.ErrorAsync("Errore nella conversione degli utenti in Avro:", err)
 				return
 			}
 			err = utils.WriteAvroToFile(avroUsers, constants.AvroFileName)
 			if err != nil {
-				logger.Error("Errore nella scrittura del file Avro:", err)
+				logger.ErrorAsync("Errore nella scrittura del file Avro:", err)
 				return
 			}
 		}
@@ -91,14 +91,14 @@ func main() {
 			for _, batch := range batches {
 				err := kafkaProducerInstance.ProduceBatch(batch, correlationID)
 				if err != nil {
-					logger.Error("Errore nell'invio del batch a Kafka:", err)
+					logger.ErrorAsync("Errore nell'invio del batch a Kafka:", err)
 					return
 				}
 			}
 
 			// Calculate elapsed time for sending batches to Kafka
 			elapsedBatchSend := time.Since(startBatchSend)
-			logger.Info("Sending batches to Kafka took %s", elapsedBatchSend)
+			logger.InfoAsync("Sending batches to Kafka took %s", elapsedBatchSend)
 		}
 	}()
 

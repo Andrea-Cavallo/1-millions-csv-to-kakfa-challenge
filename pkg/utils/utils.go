@@ -3,10 +3,10 @@ package utils
 import (
 	"csvreader/internal/models"
 	"csvreader/pkg/constants"
+	"csvreader/pkg/logger"
 	"encoding/csv"
 	"encoding/json"
 	"fmt"
-	"log"
 	"os"
 	"strconv"
 
@@ -50,7 +50,7 @@ func ReadCSV() ([]models.User, error) {
 func safelyClose(file *os.File) {
 	err := file.Close()
 	if err != nil {
-		log.Printf("Attenzione - Errore durante la chiusura del File!!: %v", err)
+		logger.ErrorAsync("Attenzione - Errore durante la chiusura del File!!: %v", err)
 	}
 }
 
@@ -77,25 +77,25 @@ func createUserFromRecord(record []string) (models.User, error) {
 func DisplayUsersAsJSON(users []models.User) {
 	jsonData, err := json.MarshalIndent(users, "", "  ")
 	if err != nil {
-		log.Fatalf("Errore durante la conversione in JSON: %v", err)
+		logger.ErrorAsync("Errore durante la conversione in JSON: %v", err)
 	}
 	fmt.Println(string(jsonData))
 }
 func WriteUsersToJSONFile(users []models.User, filename string) {
 	jsonData, err := json.MarshalIndent(users, "", "  ")
 	if err != nil {
-		log.Fatalf("Errore durante la conversione in JSON: %v", err)
+		logger.ErrorAsync("Errore durante la conversione in JSON: %v", err)
 	}
 
 	file, err := os.Create(filename)
 	if err != nil {
-		log.Fatalf("Errore durante la creazione del file: %v", err)
+		logger.ErrorAsync("Errore durante la creazione del file: %v", err)
 	}
 	defer safelyClose(file)
 
 	_, err = file.Write(jsonData)
 	if err != nil {
-		log.Fatalf("Errore durante la scrittura nel file: %v", err)
+		logger.ErrorAsync("Errore durante la scrittura nel file: %v", err)
 	}
 
 	fmt.Printf("Dati scritti nel file %s con successo.\n", filename)
