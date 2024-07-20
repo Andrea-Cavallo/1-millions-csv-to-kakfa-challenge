@@ -1,7 +1,7 @@
 package main
 
 import (
-	"csvreader/internal/producer"
+	"csvreader/internal/producer/json"
 	"csvreader/internal/service"
 	"csvreader/pkg/constants"
 	"csvreader/pkg/logger"
@@ -12,76 +12,72 @@ import (
 	"github.com/google/uuid"
 )
 
-// Design Pattern : FANOUT -<
-// Il vantaggio del pattern Fan-Out è che i task vengono eseguiti in parallelo dai worker
+// Design Pattern: FANOUT -<
+// The advantage of the Fan-Out pattern is that tasks are executed in parallel by the workers
 func main() {
 	start := time.Now()
 
-	// Genera un correlation ID
+	// Generate a correlation ID
 	correlationID := uuid.New().String()
 
-	// Ottengo gli utenti dal servizio (vengono letti da un file CSV e convertiti in una lista di Users)
+	// Get users from the service (they are read from a CSV file and converted into a list of Users)
 	users, err := service.GetUsers()
 	if err != nil {
-		logger.Error(err)
+		logger.ErrorAsync(err)
 	}
 
 	elapsed := time.Since(start)
-	defer logger.Info("La lettura di 1000000 di utenti dal CSV ha impiegato %s", elapsed)
+	defer logger.InfoAsync("Reading 1,000,000 users from CSV took ", elapsed)
 
-	// Configura il kafkaProducerInstance Kafka
+	// Configure the Kafka producer instance
 	kafkaProducerInstance, err := producer.NewProducer(constants.KafkaBootstrapServers, constants.KafkaTopic)
 	if err != nil {
-		logger.Error("Failed to create kafkaProducerInstance:", err)
+		logger.ErrorAsync("Failed to create kafkaProducerInstance:", err)
 	}
 	defer kafkaProducerInstance.Close()
 
-	// Crea un WaitGroup per aspettare che tutti i worker finiscano
+	// Create a WaitGroup to wait for all the workers to finish
 	var wg sync.WaitGroup
 
-	// Aggiunge il numero di worker al WaitGroup
+	// Add the number of workers to the WaitGroup
 	wg.Add(constants.NumWorkers)
 
-	// Canale principale per inviare i task
+	// Main channel to send tasks
 	mainCh := make(chan func())
 
-	// Divide il canale principale in numWorkers canali
+	// Split the main channel into numWorkers channels
 	channels := utils.Split(mainCh, constants.NumWorkers)
 
-	// Avvia i worker
+	// Start the workers
 	for i := 0; i < constants.NumWorkers; i++ {
-		go utils.Worker(i, channels[i], &wg)
+		go utils.Worker(channels[i], &wg)
 	}
 
-	// Invio dei task al canale principale
+	// Send tasks to the main channel
 	go func() {
-		// Chiude il canale principale quando la funzione termina
+		// Close the main channel when the function ends
 		defer close(mainCh)
 
-		// Primo task: Scrittura degli utenti su file JSON
+		// First task: Write users to JSON file
 		mainCh <- func() {
 			utils.WriteUsersToJSONFile(users, constants.JSONFileName)
 		}
 
-		// Secondo task: Conversione degli utenti in Avro e scrittura su file
+		// Second task: Convert users to Avro and write to file
 		mainCh <- func() {
 			avroUsers, err := utils.ConvertUsersToAvro(users)
 			if err != nil {
-				logger.Error("Errore nella conversione degli utenti in Avro:", err)
+				logger.ErrorAsync("Error converting users to Avro:", err)
 				return
 			}
 			err = utils.WriteAvroToFile(avroUsers, constants.AvroFileName)
 			if err != nil {
-				logger.Error("Errore nella scrittura del file Avro:", err)
+				logger.ErrorAsync("Error writing Avro file:", err)
 				return
 			}
 		}
-		// Terzo task: Lettura degli utenti e stampa su console
-		// mainCh <- func() {
-		//     utils.DisplayUsersAsJSON(users)
-		// }
 
-		// Quarto task: Invio degli utenti a Kafka in batch
+		// Third task: Send users to Kafka in batches
 		mainCh <- func() {
 			batches := utils.BatchUsers(users, constants.BatchSize)
 
@@ -91,17 +87,17 @@ func main() {
 			for _, batch := range batches {
 				err := kafkaProducerInstance.ProduceBatch(batch, correlationID)
 				if err != nil {
-					logger.Error("Errore nell'invio del batch a Kafka:", err)
+					logger.ErrorAsync("Error sending batch to Kafka:", err)
 					return
 				}
 			}
 
 			// Calculate elapsed time for sending batches to Kafka
 			elapsedBatchSend := time.Since(startBatchSend)
-			logger.Info("Sending batches to Kafka took %s", elapsedBatchSend)
+			logger.InfoAsync("Sending batches to Kafka took ", elapsedBatchSend)
 		}
 	}()
 
-	// Aspetta che tutti i worker finiscano
+	// Wait for all the workers to finish
 	wg.Wait()
 }
