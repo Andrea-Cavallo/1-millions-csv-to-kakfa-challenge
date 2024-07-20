@@ -8,6 +8,7 @@ import (
 	"os"
 	"path"
 	"runtime"
+	"strings"
 
 	"github.com/petermattis/goid"
 )
@@ -24,7 +25,6 @@ type logMessage struct {
 	msg   string
 }
 
-// nota che in GO l'init viene chiamato automaticamente ogni volta che importi il pacchetto non serve richiamarlo
 func init() {
 	file, err := os.OpenFile(constants.LOGFILE, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
 	if err != nil {
@@ -56,19 +56,20 @@ func logWorker() {
 	}
 }
 
-// Funzione per ottenere il file e la linea da cui è stato chiamato il logger, solo il nome del file e l'ID della goroutine
 func logLocationAsync() string {
-	_, file, line, ok := runtime.Caller(2)
+	pc, file, line, ok := runtime.Caller(3) // Increase the depth to 3 to get the actual caller
 	if !ok {
 		return constants.WTF
 	}
-	return fmt.Sprintf("[%s] [line:%d] [GoroutineID: %d] ", path.Base(file), line, goid.Get())
+	funcName := runtime.FuncForPC(pc).Name()
+	funcName = funcName[strings.LastIndex(funcName, "/")+1:] // Extract only the function name
+	return fmt.Sprintf("[%s] [line:%d] [function:%s] [GoroutineID: %d] ", path.Base(file), line, funcName, goid.Get())
 }
 
 func logAsync(level string, v ...interface{}) {
 	logCh <- logMessage{
 		level: level,
-		msg:   fmt.Sprintln(append([]interface{}{logLocation()}, v...)...),
+		msg:   fmt.Sprintf("%s%s", logLocationAsync(), fmt.Sprint(v...)),
 	}
 }
 

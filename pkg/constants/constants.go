@@ -8,14 +8,14 @@ const (
 
 	// main kafka
 	KafkaBootstrapServers = "localhost:9092"
-	KafkaTopic            = "oneMillionGO"
+	KafkaTopic            = "oneMillionGO-avro-v0.0.1"
 	NumWorkers            = 3
-	JSONFileName          = "users1.json"
-	AvroFileName          = "avro_users1.json"
+	JSONFileName          = "resources/files/generated/users.json"
+	AvroFileName          = "resources/files/generated/avro_users.json"
 	BatchSize             = 100000
 
 	// logs
-	LOGFILE = "oneMillion.log"
+	LOGFILE = "resources/files/logs/oneMillion.log"
 	PREFIX  = "oneMillionKafkaApp: "
 	WARNING = "WARNING: "
 	INFO    = "INFO: "
