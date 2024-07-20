@@ -1,11 +1,11 @@
-# Optimizing Kafka Topic Production with Fan-Out Pattern
+# Optimizing Kafka Topic Production with GO native concurrency 
 
 
 ### Project Challenge
 The main challenge of this project is to optimize the production of Kafka topics and make the process of sending one million topics as fast as possible.<br>
 This optimization involves fine-tuning the Kafka producer and efficiently distributing the tasks among workers using the Fan-Out pattern.<br>
 Achieving this goal will significantly enhance the performance and scalability of the application.<br>
-This is the core idea of the project, and you will find here my implementation which can still be optimized.
+This is the core idea of the project, and you will find here my implementation.
 
 
 <img src="./resources/img/run.gif" alt="run times.">
@@ -15,18 +15,29 @@ It is interesting to note that in JSON, the sending of 1 million topics, as seen
 INFO: 2024/07/17 05:22:43.662764 [main.go] [line:101] [GoroutineID: 53]  Sending batches to Kafka took %s 1.8648373s
 
 ```
-while in Avro...?
 
 The idea is : how much we can reduce the time ??
+
+## Kafka Performance Analysis
+
+Sending 1 million messages to Kafka in 1.8 seconds is an impressive performance, indicating a very high throughput. However, it is important to consider several factors that can influence the sending time and overall performance:
+
+### Throughput
+
+To evaluate whether sending 1 million messages in 1.8 seconds is a good result, we can quickly calculate the throughput:
+
+<img src="./resources/img/Throughput.png" alt="Throughput">
+
+- **System Capability**: A system capable of processing over half a million messages per second is highly performant. This level of throughput suggests that the system is well-optimized for high-speed data ingestion and processing.
 
 ## How I Planned to Optimize the Flow and Precautions Taken to Achieve Maximum Performance
 To achieve the best results and maximize performance, I implemented several optimizations in the flow:
 
-Use of the Fan-Out Pattern: This design pattern distributes work among multiple workers, allowing tasks to be executed in parallel, which improves performance and efficiency.
-Batch Processing for Topic Sending: By sending messages in batches, we reduce the overhead associated with frequent network calls and improve throughput.
-Asynchronous Logging: Logging operations are performed asynchronously to avoid blocking the main processing flow and to enhance overall system performance.
-Byte Serialization: Data is serialized into byte format for efficient storage and transmission, reducing the processing time and memory usage.
-
+- Use of the Fan-Out Pattern: This design pattern distributes work among multiple workers, allowing tasks to be executed in parallel, which improves performance and efficiency.
+- Batch Processing for Topic Sending: By sending messages in batches, we reduce the overhead associated with frequent network calls and improve throughput.
+- Asynchronous Logging: Logging operations are performed asynchronously to avoid blocking the main processing flow and to enhance overall system performance.
+- Compression before sending to reduce bytes.
+- Avoided using the standard json.Unmarshal library and promoted the use of ffjson, which according to the official documentation is 2-3 times faster and uses less memory.
 
 ## Description of the main.go and explanation of the main flow
 
@@ -56,7 +67,13 @@ Tasks are sent to the main channel. The tasks include:
 - Converting users to Avro format and writing to a file.
 - Sending users to Kafka-Broker as Json.
 
-Each task is a function executed by the workers.
+In this context, it is important to understand that the two tasks of converting data to a JSON file and converting data to Avro format and writing it to a file are designed to run in parallel using separate Go-routines. This approach ensures that these tasks do not impact kafka-production times, as they are executed concurrently.
+
+
+<img src="./resources/img/fan-out.png" alt="fan-out" width="600">
+
+*Illustration created for “A Journey With Go”, made from the original Go Gopher, created by Renee French.*
+
 
 The main program waits for all workers to complete their tasks using the `WaitGroup`. Once all workers have finished, the program can close the Kafka producer and terminate execution.
 
@@ -65,7 +82,6 @@ The main program waits for all workers to complete their tasks using the `WaitGr
 - **Parallelism**: Tasks are executed in parallel, reducing the overall execution time.
 - **Scalability**: Adding more workers can further improve performance.
 - **Efficiency**: Workers can be distributed across multiple resources, balancing the workload.
-
 
 ## Prerequisites
 
@@ -79,7 +95,7 @@ The main program waits for all workers to complete their tasks using the `WaitGr
 
 Configure Docker Compose as needed for your environment. Make sure to have the necessary services defined, including Kafka.
 
-### 2. Installing MSYS2
+### 2. Installing MSYS2 ( if you run it on windows.)
 
 I encountered an issue similar to this: [Stack Overflow issue](https://stackoverflow.com/questions/60727208/undefined-kafka-components-for-go-kafka) and resolved it using MSYS2. MSYS2 provides a modern and compatible version of gcc that should resolve linking issues with librdkafka.
 
@@ -148,5 +164,33 @@ go mod tidy
 go run .\csvreader\cmd\csv_app\main.go
 ```
 
-# Author 
-Andrea Cavallo
+## Contributing
+
+Contributions are welcome! If you have suggestions for improvements or new features, please open an issue or submit a pull request. When contributing, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch (e.g., `feature/your-feature-is-better-than-mine`).
+3. Make your changes.
+4. Commit your changes (`git commit -m 'Add some feature better than yours'`).
+5. Push to the branch (`git push origin feature/your-feature-is-better-than-mine`).
+6. Open a pull request.
+
+
+## Conclusion
+
+Here are some ideas for further improvements and considerations:
+
+1. **Topic Production Times:** It would be useful to measure the production times for topics in Avro format.
+2. **Topic Replication:** Using more replicas for topics could enhance data durability and availability.
+3. **Error Handling:** Adding comprehensive error handling mechanisms would improve the robustness of the application.
+
+## Author
+
+**Andrea Cavallo**
+
+## Keep in Contact
+
+- [LinkedIn](https://it.linkedin.com/in/cavalloandrea88)
+- [Medium](https://medium.com/@andreacavallo)
+- [Github](https://github.com/Andrea-Cavallo)
+- [Threads](https://www.threads.net/@2wes.wav)

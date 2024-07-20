@@ -2,6 +2,7 @@ package main
 
 import (
 	"csvreader/internal/producer"
+	"csvreader/internal/producer/avro"
 	"csvreader/internal/service"
 	"csvreader/pkg/constants"
 	"csvreader/pkg/logger"
@@ -25,16 +26,31 @@ func main() {
 	if err != nil {
 		logger.ErrorAsync(err)
 	}
-	
+	avroSchema := `
+	{
+		"type": "record",
+		"name": "User",
+		"fields": [
+			{"name": "ID", "type": "int"},
+			{"name": "NomeUtente", "type": "string"},
+			{"name": "Email", "type": "string"}
+		]
+	}`
 	elapsed := time.Since(start)
 	defer logger.InfoAsync("La lettura di 1000000 di utenti dal CSV ha impiegato %s", elapsed)
 
 	// Configura il kafkaProducerInstance Kafka
 	kafkaProducerInstance, err := producer.NewProducer(constants.KafkaBootstrapServers, constants.KafkaTopic)
 	if err != nil {
-		logger.ErrorAsync("Failed to create kafkaProducerInstance:", err)
+		logger.ErrorAsync("Failed to create JSON-kafkaProducerInstance:", err)
 	}
 	defer kafkaProducerInstance.Close()
+
+	kafkaProducerInstanceAvro, err := avro.NewProducerAvro(constants.KafkaBootstrapServers, constants.KafkaTopic, avroSchema)
+	if err != nil {
+		logger.ErrorAsync("Failed to create AVRO-kafkaProducerInstance:", err)
+	}
+	defer kafkaProducerInstanceAvro.CloseAvro()
 
 	// Crea un WaitGroup per aspettare che tutti i worker finiscano
 	var wg sync.WaitGroup
@@ -77,9 +93,12 @@ func main() {
 			}
 		}
 		// Terzo task: Lettura degli utenti e stampa su console
-		// mainCh <- func() {
-		//     utils.DisplayUsersAsJSON(users)
-		// }
+		mainCh <- func() {
+			err := kafkaProducerInstanceAvro.ProduceAvro(users, correlationID)
+			if err != nil {
+				return
+			}
+		}
 
 		// Quarto task: Invio degli utenti a Kafka in batch
 		mainCh <- func() {
@@ -90,6 +109,7 @@ func main() {
 
 			for _, batch := range batches {
 				err := kafkaProducerInstance.ProduceBatch(batch, correlationID)
+				//	err := kafkaProducerInstanceAvro.ProduceBatchAvro(batch, correlationID)
 				if err != nil {
 					logger.ErrorAsync("Errore nell'invio del batch a Kafka:", err)
 					return
