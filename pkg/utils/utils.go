@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"bytes"
 	"csvreader/internal/models"
 	"csvreader/pkg/constants"
 	"csvreader/pkg/logger"
@@ -11,6 +12,7 @@ import (
 	"strconv"
 
 	"github.com/linkedin/goavro/v2"
+	"github.com/pquerna/ffjson/ffjson"
 )
 
 // ReadCSV reads a CSV file containing user data and returns a slice of models.User objects.
@@ -81,24 +83,38 @@ func DisplayUsersAsJSON(users []models.User) {
 	}
 	fmt.Println(string(jsonData))
 }
+
+// WriteUsersToJSONFile scrive una lista di utenti in un file JSON utilizzando ffjson
 func WriteUsersToJSONFile(users []models.User, filename string) {
-	jsonData, err := json.MarshalIndent(users, "", "  ")
+	// Utilizza ffjson per la serializzazione
+	jsonData, err := ffjson.Marshal(users)
 	if err != nil {
 		logger.ErrorAsync("Errore durante la conversione in JSON: %v", err)
+		return
+	}
+
+	// Indenta il JSON utilizzando encoding/json
+	var indentedData bytes.Buffer
+	err = json.Indent(&indentedData, jsonData, "", "  ")
+	if err != nil {
+		logger.ErrorAsync("Errore durante l'indentazione del JSON: %v", err)
+		return
 	}
 
 	file, err := os.Create(filename)
 	if err != nil {
 		logger.ErrorAsync("Errore durante la creazione del file: %v", err)
+		return
 	}
 	defer safelyClose(file)
 
-	_, err = file.Write(jsonData)
+	_, err = file.Write(indentedData.Bytes())
 	if err != nil {
 		logger.ErrorAsync("Errore durante la scrittura nel file: %v", err)
+		return
 	}
 
-	fmt.Printf("Dati scritti nel file %s con successo.\n", filename)
+	logger.InfoAsync("Dati scritti nel file %s con successo.\n", filename)
 }
 func ConvertUsersToAvro(users []models.User) ([]byte, error) {
 	// Definizione dello schema Avro per gli utenti

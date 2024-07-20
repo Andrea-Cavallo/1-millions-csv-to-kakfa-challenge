@@ -38,24 +38,6 @@ func NewProducerAvro(bootstrapServers, topic, avroSchema string) (*Producer, err
 	}, nil
 }
 
-func (p *Producer) ProduceAvro(user *models.User, correlationID string) error {
-	logger.DebugAsync("Starting Avro serialization")
-	payload, err := p.ConvertUserToAvro(user)
-	if err != nil {
-		logger.ErrorAsync("Failed to serialize payload:", err)
-		return fmt.Errorf("failed to serialize payload: %w", err)
-	}
-
-	logger.DebugAsync("Serialization successful, starting production")
-	err = p.produceAvroMessage(payload, correlationID)
-	if err != nil {
-		return fmt.Errorf("produce failed: %w", err)
-	}
-
-	logger.DebugAsync("Message produced, waiting for delivery report")
-	return p.waitForAvroDeliveryReport()
-}
-
 func (p *Producer) ProduceBatchAvro(avroData [][]byte, correlationID string) error {
 	logger.InfoAsync("Starting batch production")
 
