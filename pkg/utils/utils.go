@@ -114,7 +114,7 @@ func WriteUsersToJSONFile(users []models.User, filename string) {
 		return
 	}
 
-	logger.InfoAsync("Dati scritti nel file %s con successo.\n", filename)
+	logger.InfoAsync("Dati scritti nel file con successo.\n", filename)
 }
 func ConvertUsersToAvro(users []models.User) ([]byte, error) {
 	// Definizione dello schema Avro per gli utenti

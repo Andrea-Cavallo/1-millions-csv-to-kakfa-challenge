@@ -8,7 +8,7 @@ const (
 
 	// main kafka
 	KafkaBootstrapServers = "localhost:9092"
-	KafkaTopic            = "oneMillionGO-avro-v0.0.1"
+	KafkaTopic            = "oneMillionGO-v0.0.3"
 	NumWorkers            = 3
 	JSONFileName          = "resources/files/generated/users.json"
 	AvroFileName          = "resources/files/generated/avro_users.json"

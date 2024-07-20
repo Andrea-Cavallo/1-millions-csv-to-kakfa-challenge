@@ -10,9 +10,9 @@ This is the core idea of the project, and you will find here my implementation.
 
 <img src="./resources/img/run.gif" alt="run times.">
 
-It is interesting to note that in JSON, the sending of 1 million topics, as seen from the captured log line: 1.8648373s
+It is interesting to note that in JSON, the sending of 1 million topics, as seen from the captured log line: 1.3532528s
 ```text
-INFO: 2024/07/17 05:22:43.662764 [main.go] [line:101] [GoroutineID: 53]  Sending batches to Kafka took %s 1.8648373s
+INFO: 2024/07/20 12:16:58.644915 [main.go] [line:97] Sending batches to Kafka took 1.3532528s
 
 ```
 
@@ -24,9 +24,13 @@ Sending 1 million messages to Kafka in 1.8 seconds is an impressive performance,
 
 ### Throughput
 
-To evaluate whether sending 1 million messages in 1.8 seconds is a good result, we can quickly calculate the throughput:
+To evaluate whether sending 1 million messages in 1.3 seconds is a good result, we can quickly calculate the throughput:
 
-<img src="./resources/img/Throughput.png" alt="Throughput">
+
+Throughput: 739.010,40 messages/second
+
+
+
 
 - **System Capability**: A system capable of processing over half a million messages per second is highly performant. This level of throughput suggests that the system is well-optimized for high-speed data ingestion and processing.
 
